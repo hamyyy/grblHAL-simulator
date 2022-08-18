@@ -5,6 +5,10 @@ project(grblHAL-sim C)
 # cmake .. -G "Unix Makefiles"
 # make
 
+add_compile_definitions(N_AXIS=6)
+add_compile_definitions(N_TOOLS=16)
+add_compile_definitions(DEFAULT_HOMING_ENABLE)
+
 add_compile_definitions(F_CPU=16000000)
 
 
@@ -89,6 +93,7 @@ if(UNIX)
 endif(UNIX)
 
 
+
 add_executable(grblHAL_sim 
     src/main.c 
     src/simulator.h
@@ -109,12 +114,11 @@ add_executable(grblHAL_sim
     ${platform_SRC}
     ${grbl_SRC}
 )
-
+    
 target_link_libraries(grblHAL_sim PRIVATE 
     m
     ${platform_LIB}
 )
-
 
 add_executable(grblHAL_validator 
     src/validator.c 
@@ -127,8 +131,3 @@ target_link_libraries(grblHAL_validator PRIVATE
     ${platform_LIB}
 )
 
-add_custom_command(
-        TARGET grblHAL_sim PRE_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-                ${CMAKE_CURRENT_SOURCE_DIR}/config.h
-                ${CMAKE_CURRENT_SOURCE_DIR}/src/grbl/config.h)
