@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
 project(grblHAL-sim C)
 
-
-
+# cd build
+# cmake .. -G "Unix Makefiles"
+# make
 
 add_compile_definitions(F_CPU=16000000)
 

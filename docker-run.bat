@@ -1,0 +1,1 @@
+docker run --rm --name grbl-hal-sim -dp 4000:4000 grbl-hal
