@@ -8,6 +8,7 @@ LABEL version="0.0.1"
 LABEL description="This is custom Docker Image for grblHAL simulator."
 
 COPY . /sim
+COPY ./config.h /sim/src/grbl/config.h
 RUN mkdir /sim/build
 
 
