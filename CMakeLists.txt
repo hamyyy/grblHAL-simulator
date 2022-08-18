@@ -127,5 +127,8 @@ target_link_libraries(grblHAL_validator PRIVATE
     ${platform_LIB}
 )
 
-
-configure_file("./config.h" "./src/grbl/config.h" COPYONLY)
+add_custom_command(
+        TARGET grblHAL_sim PRE_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+                ${CMAKE_CURRENT_SOURCE_DIR}/config.h
+                ${CMAKE_CURRENT_SOURCE_DIR}/src/grbl/config.h)
