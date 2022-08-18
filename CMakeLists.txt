@@ -126,3 +126,6 @@ target_link_libraries(grblHAL_validator PRIVATE
     m 
     ${platform_LIB}
 )
+
+
+configure_file("./config.h" "./src/grbl/config.h" COPYONLY)
